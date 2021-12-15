@@ -1,0 +1,6 @@
+# print('Hello! My name is:',end='\t')
+# print('Hello! My name is:',end='1')
+# print('Hello! My name is:',end='2')
+# print('Hello! My name is:',end='3')
+# print(' Ethan')
+print('Hello', 'my', 'name', 'is', 'ethan',sep='Everything can be here')
