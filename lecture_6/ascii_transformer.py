@@ -39,19 +39,20 @@ def count_types(s):
     for letter in s:
         ascii_value = ord(letter)
         if 32 <= ascii_value < 47:
-            types_count['special'] = types_count['special'] + 1
+            types_count['special'] += 1
         elif 48 <= ascii_value <= 57:
-            types_count['digits'] = types_count['digits'] + 1
+            types_count['digits'] +=  1
         elif 65 <= ascii_value <= 90:
-            types_count['big'] = types_count['big'] + 1
+            types_count['big'] += 1
         elif 97 <= ascii_value <= 122:
-            types_count['small'] = types_count['small'] + 1
+            types_count['small'] += 1
     return types_count
 
 
 def print_count_types(s):
     counts = count_types(s)
-    for name, amount in counts.items():
+    for name, amount in counts.items(): # {'bla':5,'Hello':6} = [('bla',5),('Hello',6)]
+        # If i would do just name, name=('bla',5)
         print(name, amount)
 
 
