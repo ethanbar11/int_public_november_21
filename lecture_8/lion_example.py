@@ -5,13 +5,14 @@ class Lion:
     def rawr(self):
         print('Rawr :{}'.format(self.my_name))
 
-    def sum(self, num1, num2):
-        return num1 + num2
-
 
 class Zoo:
-    def __init__(self, name_of_lion):
-        self.my_lion = Lion(name_of_lion)
+    def __init__(self):
+        self.lions_in_zoo = []
+
+    def add_lion(self, lion_name):
+        new_lion = Lion(lion_name)
+        self.lions_in_zoo.append(new_lion)
 
     def make_my_lion_rawr(self):
         self.my_lion.rawr()
