@@ -18,7 +18,7 @@ class Stack:
             # and bubble up the exception until it stops at a relevant try-except or block
             # shuts down the program.
 
-            raise Exception('The stack is empty, you cannot pop item.')
+            raise ValueError('The stack is empty, you cannot pop item.')
         # # lst.pop removes the las item from the list and returns it to the caller..
         # y = self.lst.pop()
 
@@ -53,5 +53,19 @@ except:
 def is_valid_brackets(equation):
     stack = Stack()
     for letter in equation:
-        stack.push(letter)
+        if letter == '(':
+            stack.push('(')
+        elif letter == ')':
+            try:
+                stack.pop()
+            except ValueError:
+                # Im going to enter this except if the stack was empty.
+                # and therefore the equation is not valid!
+                return False
 
+    return stack.is_empty()
+
+
+# print(is_valid_brackets('(1+5)+(3+4)'))
+
+print(is_valid_brackets('(()'))
