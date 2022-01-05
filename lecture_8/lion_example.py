@@ -1,9 +1,21 @@
+class Bird:
+    pass
+
+
+# Crow inherits bird
+class Crow(Bird):
+    pass
+
+
 class Lion:
     def __init__(self, name):
         self.my_name = name
 
     def rawr(self):
         print('Rawr :{}'.format(self.my_name))
+
+    def __str__(self):
+        return 'The lion name is ' + self.my_name
 
 
 class Zoo:
@@ -26,7 +38,7 @@ class Zoo:
 
     def print_lions(self):
         for lion in self.lions_in_zoo.values():
-            print(lion.my_name)
+            print(lion)
 
     def print_longest_lion_name(self):
         if len(self.lions_in_zoo) == 0:
@@ -50,5 +62,7 @@ zoo12.add_lion('Shlomi3')
 zoo12.add_lion('Shlomi4')
 zoo12.add_lion('Shlomi332135')
 zoo12.print_lions()
-zoo12.count()
-zoo12.print_longest_lion_name()
+print(zoo12)  # inside the print function - It calls the function __str__
+
+# zoo12.count()
+# zoo12.print_longest_lion_name()
