@@ -34,19 +34,36 @@ class Stack:
             raise Exception('The stack is empty, you cannot top item.')
         return self.lst[-1]
 
+    def __add__(self, other_stack):
+        new_stack = Stack()
+        for item in self.lst:
+            new_stack.push(item)
 
-# Creating object of type stack and using it.
+        for item in other_stack.lst:
+            new_stack.push(item)
+        return new_stack
+
+    def __str__(self):
+        new_str = '['
+        for item in self.lst:
+            new_str += str(item) + ','
+        new_str += ']'
+        return new_str
+
+    # def __eq__(self, other):
+    #     return self.lst == other.lst
+
+
 stack1 = Stack()
-
+stack2 = Stack()
+print(stack1 == stack2)
 for i in range(1, 5):
     stack1.push(i)
 
-for i in range(1, 5):
-    print(stack1.pop())
-try:
-    print(stack1.pop())
-except:
-    print('The stack is empty...')
+for i in range(5, 9):
+    stack2.push(i)
+stack3 = stack1 + stack2
+print(stack3)
 
 
 # Accepts equation and returns True if valid brackets else False.
@@ -65,7 +82,6 @@ def is_valid_brackets(equation):
 
     return stack.is_empty()
 
-
 # print(is_valid_brackets('(1+5)+(3+4)'))
 
-print(is_valid_brackets('(()'))
+# print(is_valid_brackets('(()'))
