@@ -36,10 +36,10 @@ class HangmanSession:
             self.letters_already_guessed.append(letter)
             self.print_hangman_word()
             if self.is_completed_guess():
-                print('Woho! succes in guessing!')
+                print('Woho! success in guessing!')
                 win = True
                 break
-        if win == True:
+        if win:
             print('Well done, the game has ended succesfully.')
         else:
             print('You are a loser!!!!')
