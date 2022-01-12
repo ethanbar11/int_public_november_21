@@ -99,7 +99,7 @@ class HangmanSession:
         print('The word is:')
         self.print_hangman_word()
         win = False
-        while self.guesses_left > 0:
+        while self.guesses_left > 0 and win == False:
             letter = input('Please enter a letter:')
             if letter in self.letters_already_guessed:
                 print('The letter has already been guessed!')
@@ -115,7 +115,6 @@ class HangmanSession:
             if self.is_completed_guess():
                 print('Woho! success in guessing!')
                 win = True
-                break
         if win:
             print('Well done, the game has ended succesfully.')
             name = input('Please enter your name: ')

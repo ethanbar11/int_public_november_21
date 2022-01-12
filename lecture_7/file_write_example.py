@@ -1,4 +1,4 @@
-my_file = open('new_file.txt', 'w')
+my_file = open('question.csv', 'w')
 # my_file.writelines(['Hello','line2','line3'])
 my_file.write('Bli Bla Blo\n hello glarg \n fafefae')
 my_file.write('line3')
