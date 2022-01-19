@@ -40,7 +40,11 @@ def create_table(conn):
 # conn is a connection object.
 def signup(conn, row):
     cursor = conn.cursor()
-    cursor.execute("Insert into users (username,password) values ('Guy','2345')")
+
+    # Cursor.execute takes the values of the tuple(=row) and enters them one by one
+    # into the question marks.
+    # cursor.execute("Insert into users (username,password) values (?,?)", row)
+    cursor.execute("Insert into users (username,password) values ('{}','{}')".format(row[0], row[1]))
     conn.commit()
 
 
@@ -49,6 +53,9 @@ if __name__ == '__main__':
     db_path = r"./users_db.db"
     conn = create_connection(db_path)
     # create_table(conn)
-    # A tuple.
-    row = ('Ethan', '1234')
-    signup(conn, row)
+    option = input('Please enter 1) sign up: ')
+    if option == '1':
+        name = input('Please enter name:')
+        password = input('Please enter password:')
+        row = (name, password)
+        signup(conn, row)
