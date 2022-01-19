@@ -48,14 +48,37 @@ def signup(conn, row):
     conn.commit()
 
 
+def is_user_valid(conn, username, password):
+    """
+    Query all rows in the tasks table
+    :param conn: the Connection object
+    :return:
+    """
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM users where username='{}' and password = '{}'".format(username, password))
+
+    rows = cur.fetchall()
+    if len(rows) == 0:
+        return False
+    else:
+        return True
+
+
 if __name__ == '__main__':
     # The path I want to create my database in.
     db_path = r"./users_db.db"
     conn = create_connection(db_path)
     # create_table(conn)
-    option = input('Please enter 1) sign up: ')
+    option = input('Please enter 1) sign up: 2) sign in: ')
     if option == '1':
         name = input('Please enter name:')
         password = input('Please enter password:')
         row = (name, password)
         signup(conn, row)
+    elif option == '2':
+        name = input('Please enter name:')
+        password = input('Please enter password:')
+        if is_user_valid(conn, name, password):
+            print('The user has logged in successfully!')
+        else:
+            print('Bad password/username.')
