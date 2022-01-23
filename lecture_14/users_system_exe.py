@@ -1,5 +1,11 @@
+import string
 import sqlite3
 from sqlite3 import Error
+
+
+def is_strong_password(password):
+    if len(password) < 8:
+        return False
 
 
 # This function accepts a path for the database on the computer.
@@ -48,6 +54,21 @@ def signup(conn, row):
     conn.commit()
 
 
+# This is a function we are not using,
+# retrieving all the passwords in the table.
+def retrieve_password_of_username(conn, username):
+    cur = conn.cursor()
+    cur.execute("SELECT password FROM users ")
+
+    # Return all the lines that was retrieved from the DB.
+    rows = cur.fetchall()
+    if len(rows) == 0:
+        raise Exception('There is no username with that username')
+    else:
+
+        return rows[0]
+
+
 def is_user_valid(conn, username, password):
     """
     Query all rows in the tasks table
@@ -57,6 +78,24 @@ def is_user_valid(conn, username, password):
     cur = conn.cursor()
     cur.execute("SELECT * FROM users where username='{}' and password = '{}'".format(username, password))
 
+    # Return all the lines that was retrieved from the DB.
+    rows = cur.fetchall()
+    if len(rows) == 0:
+        return False
+    else:
+        return True
+
+
+def is_username_exists(conn, username):
+    """
+    Query all rows in the tasks table
+    :param conn: the Connection object
+    :return:
+    """
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM users where username='{}'".format(username))
+
+    # Return all the lines that was retrieved from the DB.
     rows = cur.fetchall()
     if len(rows) == 0:
         return False
@@ -68,17 +107,21 @@ if __name__ == '__main__':
     # The path I want to create my database in.
     db_path = r"./users_db.db"
     conn = create_connection(db_path)
-    # create_table(conn)
+    create_table(conn)
     option = input('Please enter 1) sign up: 2) sign in: ')
     if option == '1':
         name = input('Please enter name:')
         password = input('Please enter password:')
         row = (name, password)
-        signup(conn, row)
+        if not is_username_exists(conn, name):
+            signup(conn, row)
+        else:
+            print('Cannot perform action! username already exists.')
     elif option == '2':
         name = input('Please enter name:')
         password = input('Please enter password:')
-        if is_user_valid(conn, name, password):
+        if is_username_exists(conn, name, password):
             print('The user has logged in successfully!')
         else:
             print('Bad password/username.')
+    conn.close()
