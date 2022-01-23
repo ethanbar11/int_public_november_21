@@ -6,6 +6,24 @@ from sqlite3 import Error
 def is_strong_password(password):
     if len(password) < 8:
         return False
+    is_found_lower_letters = False
+    is_found_upper_letters = False
+    is_found_digits = False
+    is_found_special_chars = False
+    for character in password:
+        if character in string.ascii_uppercase:
+            is_found_upper_letters = True
+        elif character in string.ascii_lowercase:
+            is_found_lower_letters = True
+        elif character in string.digits:
+            is_found_digits = True
+        elif character in string.punctuation:
+            is_found_special_chars = True
+
+    if is_found_lower_letters and is_found_upper_letters and is_found_digits and is_found_special_chars:
+        return True
+    else:
+        return False
 
 
 # This function accepts a path for the database on the computer.
@@ -113,10 +131,10 @@ if __name__ == '__main__':
         name = input('Please enter name:')
         password = input('Please enter password:')
         row = (name, password)
-        if not is_username_exists(conn, name):
+        if not is_username_exists(conn, name) and is_strong_password(password):
             signup(conn, row)
         else:
-            print('Cannot perform action! username already exists.')
+            print('Cannot perform action! username already exists or password not strong enough.')
     elif option == '2':
         name = input('Please enter name:')
         password = input('Please enter password:')
