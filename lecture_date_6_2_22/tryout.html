@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Welcome</title>
+	<script>
+		function myFunction() {
+			var equation = document.getElementById('equation').value
+			var result = eval(equation)
+			document.getElementById('output').innerHTML='The result is:' + result
+
+		}
+		
+		function connect_first_and_last_name() {
+			var first_name=document.getElementById('first_name').value
+			var last_name=document.getElementById('last_name').value
+			document.getElementById('outcome').innerHTML='Your name is ' + first_name + ' ' + last_name;
+		}
+		
+	</script>
+
+
+	</head>
+	<body>
+		<!--
+		<form>
+			<p> Please insert equation: </p>
+			<input type="text" id="equation" name="equation" value="">
+			<br>
+		</form>
+
+		<p id='output'></p>
+		<button onclick="myFunction()">Click me to calculate!</button>
+		
+		</br>
+		-->
+		
+		<p> First Exercise: </p>
+		<button onclick="window.alert('Don\'t push me')"> Pop up! </button>
+		</br>
+		<p> Second Exercise: </p>
+			<p> Please insert equation: </p>
+		<form>
+			<input type="text" id="first_name" name="first_name" >
+			</br>
+			<input type="text" id="last_name" name="last_name" >
+
+		</form>
+		<button onclick="connect_first_and_last_name()"> Connect inputs </button> 
+		<p id='outcome'> Please click on the button. </p>
+		 
+		<h1> 3rd exercise </h1>
+		<form>
+			<input type="text" id="bla" name="bla" />
+		</form>
+		<button onclick="connect_first_and_last_name()"> Fill Table </button> 
+		 <table style="border: 1px solid black;  border-collapse: collapse;">
+			<tr style="border: 1px solid black;  border-collapse: collapse;">
+				<th style="border: 1px solid black;  border-collapse: collapse;">
+				 
+				</th>
+				<th style="border: 1px solid black;  border-collapse: collapse;">
+
+				</th>
+			</tr>
+			<tr>
+				<th style="border: 1px solid black;  border-collapse: collapse;">
+
+				</th>
+				<th style="border: 1px solid black;  border-collapse: collapse;">
+
+				</th>
+			</tr>
+		</table>
+	
+					
+	</body>
+</html>
