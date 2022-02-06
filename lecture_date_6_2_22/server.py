@@ -10,10 +10,10 @@ def sum(num1,num2):
 # This add a routing for the path 'bla'
 @app.route('/bla')
 def func():
-    return render_template('tryout.html')
-    # with open('tryout.html', 'r') as f:
-    #     text = f.read()
-    #     return text
+    # return render_template('tryout.html')
+    with open('tryout.html', 'r') as f:
+        text = f.read()
+        return text
 
 
 if __name__ == '__main__':
