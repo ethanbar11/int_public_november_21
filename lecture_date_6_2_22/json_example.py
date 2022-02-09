@@ -1,3 +1,4 @@
+import server
 import json
 
 x = {'avihay': 5, 'roy': 9, 'Ethan': 3, 'pegasus': 'Bla Bla'}

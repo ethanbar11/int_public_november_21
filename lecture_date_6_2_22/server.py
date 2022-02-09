@@ -23,6 +23,5 @@ def generate_random_number():
     number = random.randint(1, 10)
     return str(number)
 
-
 if __name__ == '__main__':
     app.run(debug=True)
