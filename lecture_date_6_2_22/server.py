@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import random
 
 app = Flask(__name__)
@@ -18,10 +18,18 @@ def func():
         return text
 
 
+@app.route('/dog', methods=['POST'])
+def dog_handler():
+    x=request.get_json()
+    print(x)
+    return 'Thank you!'
+
+
 @app.route('/get_random')
 def generate_random_number():
     number = random.randint(1, 10)
     return str(number)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
