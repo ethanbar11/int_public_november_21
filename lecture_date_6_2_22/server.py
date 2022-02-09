@@ -18,9 +18,25 @@ def func():
         return text
 
 
+@app.route('/hello')
+def hello():
+    return 'Hello!'
+
+
+@app.route('/validate_snake', methods=['POST'])
+def validate_snake():
+    json_object = request.json
+    # Checks if there is a key named 'snake' json_object
+    # which is dictionary
+    if 'snake' in json_object:
+        return 'Thank you!'
+    else:
+        return 'ssssssssssssss'
+
+
 @app.route('/dog', methods=['POST'])
 def dog_handler():
-    x=request.get_json()
+    x = request.get_json()
     print(x)
     return 'Thank you!'
 
