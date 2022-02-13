@@ -13,7 +13,6 @@ for food in foods:
     # Looking for tags named 'name' and 'price' and returns its value:
     name = food.find('name').text
     price = food.find('price').text
-
     # Printing it
     print('The food name is {} and its price is {}'.format(name, price))
 # for product in root:
