@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+p {
+	font-size:50px;
+	font-family: "Arial", Times, serif;
+	background-color:blue;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+/* This means - run the code inside the function only
+when the document is ready */
+$(document).ready(function(){
+ /* This runs only when website is ready*/	
+  $("#hide").click(function(){
+    $("p").hide();
+    $("h2").hide();
+  });
+  $("#show").click(function(){
+    $("p").show();
+    $("h2").show();
+  });
+});
+</script>
+</head>
+<body>
+
+<h2>This is a heading</h2>
+
+<p>This is a paragraph.</p>
+<p>This is another paragraph.</p>
+
+<button id="show">Show</button>
+<button id="hide"> Hide </button>
+
+</body>
+</html>

@@ -1,15 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        table, tr, td {
+          border: 1px solid;
+        }
+        * {
+          margin: auto;
+          width: 50%;
+          padding: 10px;
+
+        }
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-        
+    $(document).ready(function(){
+        $.get("/get_new_sudoku",
+        // The returned data here is a dictionary, containing one key-value,
+        // Which is the table.
+        function(data, status){
+          /*Converting the data from JSON to dictionary and extracting the table*/
+          board= JSON.parse(data)['board'];
+          var content = "<table>"
+          for (var i=0; i<9;i++){
+            content+="<tr>";
+            for (var j=0;j<9;j++) {
+                cell_value=board[i][j].toString();
+                content+="<td>"+cell_value +"</td>";
+            }
+            content+="</tr>";
+          }
+          content+="</table>";
+          $('#board').append(content);
+         }
+        );
+    });
+
     </script>
     <meta charset="UTF-8">
     <title>Sudoku</title>
 </head>
 <body>
-    <h1> Sudoku Page</h1>
-    <table></table>
+<h1> Sudoku Page</h1>
+<div id="board"></div>
+
 
 </body>
 </html>
