@@ -1,5 +1,5 @@
 from random import sample
-import itertools
+
 base = 3
 side = base * base
 
@@ -22,7 +22,8 @@ def generate_sudoku():
     nums = shuffle(range(1, base * base + 1))
     return [[nums[pattern(r, c)] for c in cols] for r in rows]
 
-def check_sudoku(grid):
+
+def is_sudoku_valid(grid):
     for row in range(len(grid)):
         for col in range(len(grid)):
             # check value is an int
@@ -48,4 +49,5 @@ def check_sudoku(grid):
         cols = []
     # if you get past all the false checks return True
     return True
+
 
