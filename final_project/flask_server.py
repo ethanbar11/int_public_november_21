@@ -18,8 +18,7 @@ def get_new_sudoku():
     new_board = sudoko_code.generate_sudoku()
 
     # This is a string
-    new_board_as_json = json.dumps(new_board)
-    print(new_board_as_json)
+    new_board_as_json = json.dumps({'board': new_board})
     return new_board_as_json
 
 
