@@ -23,11 +23,16 @@
           /*Converting the data from JSON to dictionary and extracting the table*/
           board= JSON.parse(data)['board'];
           var content = "<table>"
+          // Going through all the values of the sudoku tables and
+          // Initializes it.
           for (var i=0; i<9;i++){
             content+="<tr>";
             for (var j=0;j<9;j++) {
                 cell_value=board[i][j].toString();
-                content+="<td>"+cell_value +"</td>";
+                if (cell_value==0) {
+                    cell_value="<input type='text'>"
+                }
+                content+="<td id="+i.toString()+","+j.toString()+">"+cell_value +"</td>";
             }
             content+="</tr>";
           }
@@ -36,6 +41,9 @@
          }
         );
     });
+    function submit() {
+
+    }
 
     </script>
     <meta charset="UTF-8">
@@ -43,8 +51,9 @@
 </head>
 <body>
 <h1> Sudoku Page</h1>
-<div id="board"></div>
+<form><div id="board"></div></form>
 
+<button id="submit_button" onclick="">Submit</button>
 
 </body>
 </html>

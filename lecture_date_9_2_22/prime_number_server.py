@@ -3,6 +3,13 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 
+@app.route('/top_10')
+def get_top_10():
+    # Get
+    # Reads from the db the 10 top
+    # Returns it as json
+
+
 @app.route('/', methods=['POST', 'GET'])
 def index():
     print(request.method)
